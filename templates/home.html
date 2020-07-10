@@ -1,0 +1,21 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Booble</title>
+</head>
+<body>
+<h1>Submit two numbers for addition!</h1>
+</body>
+
+<form action="add", method="post">
+
+    {% csrf_token %}
+
+    Enter 1st number: <input type="text" name="Num1"><br></br>
+    Enter 2nd number: <input type="text" name="Num2"><br></br>
+    <input type="Submit"> <br />
+    <!-- Result of adding numbers is : {{result}} -->
+</form>
+</html>

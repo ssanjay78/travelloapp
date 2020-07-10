@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="register" method="post">
+        {% csrf_token %}
+        <h1> Please provide the details for registration</h1>
+        <br><br>
+        <input type="text" name="first_name" placeholder="First Name"><br><br>
+        <input type="text" name="last_name" placeholder="Last Name"><br><br>
+        <input type="email" name="email" placeholder="Email ID"><br><br>
+        <input type="text" name="username" placeholder="User Name"><br><br>
+        <input type="password" name="password1" placeholder="Password"><br><br>
+        <input type="password" name="password2" placeholder="Confirm Password"><br><br>
+        <input type="Submit">
+    </form>
+
+    <div>
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+    </div>
+</body>
+</html>
