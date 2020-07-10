@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from .models import Testimonials
 from django.contrib.auth.models import User,auth
 
 # Create your views here.
@@ -58,3 +59,14 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+def testimonials(request):
+    user_feedback = Testimonials.objects.all()
+    if request.method == 'POST':
+        username = request.POST['username']
+        comments = request.POST['comments']
+        
+        feedback = Testimonials.objects.create(comment=[comments],name=[username])
+        
+        return render(request, 'index.html', {'user_feedback': user_feedback})
+    else:
+        return render(request, 'testimonials.html')

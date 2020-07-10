@@ -11,7 +11,3 @@ class PlacesData(models.Model):
     image = models.ImageField(upload_to='pics')
     offer = models.BooleanField(default=False)
 
-# Created Class to take objects for Testimonials 
-class Testimonials(models.Model):
-    comment = ArrayField(models.TextField())
-    name = ArrayField(models.CharField(max_length=50))
