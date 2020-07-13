@@ -8,7 +8,7 @@
 <title>Travello</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Travello template project">
+<meta name="description" content="A Travelling Guider">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
 <link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
@@ -30,22 +30,26 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="{% static 'index.html' %}">Travello</a></div>
+							<div class="logo"><a href="{% url 'about' %}">Travello</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="{% static 'index.html' %}">Home</a></li>
-									<li><a href="{% static 'about.html' %}">About us</a></li>
+									<li class="active"><a href="{% url 'index' %}">Home</a></li>
+									<li><a href="{% url 'about' %}">About Us</a></li>
 
 									{% if user.is_authenticated %}
-									<li>Welcome, {{user.username}}</li>
+									<span class="header_phone ml-auto" style="color:black">
+										Welcome, {{user.first_name}} 
+									</span>
 									<li><a href="registration/logout">Logout</a></li>
 									{% else %}
 									<li><a href="registration/register">Register</a></li>
 									<li><a href="registration/loginwith">Login</a></li>
 									{% endif %}
+
+									{% if user.is_authenticated %}
 									<li><a href="registration/testimonials">Feedback</a></li>
-									
-								</ul>
+									{% endif %}
+								</ul>	
 							</nav>
 							<div class="header_phone ml-auto">Call us: +91-8240 340 269</div>
 
@@ -76,20 +80,32 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="{% static 'index.html' %}">Travello</a></div>
+			<div class="menu_logo"><a href="{% url 'about' %}">Travello</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="{% static 'inex.html' %}">Home</a></li>
-				<li><a href="{% static 'about.html' %}">About us</a></li>
-				<li><a href="{% static '#' %}">Services</a></li>
-				<li><a href="{% static 'news.html' %}">News</a></li>
-				<li><a href="{% static 'contact.html' %}">Contact</a></li>
+				<li class="active"><a href="{% url 'index' %}">Home</a></li>
+				<li><a href="{% url 'about' %}">About Us</a></li>
+
+				{% if user.is_authenticated %}
+				<span class="login100-form-title p-t-20 p-b-45" style="font-size:x-large" style="color:navy">
+					Welcome, {{user.first_name}} 
+				</span>
+				<li><a href="registration/logout">Logout</a></li>
+				{% else %}
+				<li><a href="registration/register">Register</a></li>
+				<li><a href="registration/loginwith">Login</a></li>
+				{% endif %}
+
+				{% if user.is_authenticated %}
+				<li><a href="registration/testimonials">Feedback</a></li>
+				{% endif %}
+
 			</ul>
 		</div>
 		<div class="menu_social">
-			<div class="menu_phone ml-auto">Call us: 00-56 445 678 33</div>
+			<div class="menu_phone ml-auto">Call us: +91-8240 340 269</div>
 			<ul class="d-flex flex-row align-items-start justify-content-start">
 				<li><a href="{% static '#' %}"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
 				<li><a href="{% static '#' %}"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -270,7 +286,7 @@
 							<div class="destination_content">
 								<div class="destination_title"><a href="{% static 'destinations.html' %}">{{place.name}}</a></div>
 								<div class="destination_subtitle"><p>{{place.desc}}</p></div>
-								<div class="destination_price">From ${{place.price}}</div>
+								<div class="destination_price">From ₹{{place.price}}</div>
 							</div>
 						</div>
 						{% endfor %}
@@ -324,102 +340,8 @@
 			</ul>
 		</div>
 	</div>
-
-	<!-- News -->
-
-	<div class="news" id="news">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-8">
-					<div class="news_container">
-						
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_1.jpg' %}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="{% static '#' %}">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="{% static '#' %}">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_2.jpg' %}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>01</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="{% static '#' %}">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="{% static '#' %}">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Tempor massa et laoreet malesuada. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo.</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_3.jpg' %}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>29</div>
-									<div>may</div>
-								</div>
-								<div class="news_post_title"><a href="{% static '#' %}">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="{% static '#' %}">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Vivamus massa.Tempor massa et laoreet malesuada. Aliquam nulla nisl, accumsan sit amet mattis.</p>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
-
-				<!-- News Sidebar -->
-				<div class="col-xl-4">
-					<div class="travello">
-						<div class="background_image" style="background-image:url({% static 'images/travello.jpg' %})"></div>
-						<div class="travello_content">
-							<div class="travello_content_inner">
-								<div></div>
-								<div></div>
-							</div>
-						</div>
-						<div class="travello_container">
-							<a href="{% static '#' %}">
-								<div class="d-flex flex-column align-items-center justify-content-end">
-									<span class="travello_title">Get a 20% Discount</span>
-									<span class="travello_subtitle">Buy Your Vacation Online Now</span>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
+	<br><br>
+	
 	<!-- Footer -->
 
 	<footer class="footer">
@@ -455,7 +377,7 @@
 								<div class="footer_contact_title">give us a call</div>
 								<div class="footer_contact_list">
 									<ul>
-										<li>Office Landline: +033 5567 32 664 567</li>
+										<li>Office Landline: +033 556 732 66</li>
 										<li>Mobile: +91 8240 340 269</li>
 									</ul>
 								</div>

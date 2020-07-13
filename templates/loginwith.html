@@ -1,24 +1,96 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Login</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'loginmedia/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/css/main.css' %}">
+<!--===============================================================================================-->
 </head>
 <body>
-    <form action="loginwith" method="post">
-        {% csrf_token %}
-        <input type="text" name="username" placeholder="User Name"><br>
-        <input type="password" name="password" placeholder="Password" ><br>
-        <input type="Submit">
-    </form>
-    <div>
-        {% for message in messages %}
-        {{message}}
-        {% endfor %}
-    </div>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url({% static 'loginmedia/images/img-01.jpg' %});">
+			<div class="wrap-login100 p-t-190 p-b-30">
+				<form action="loginwith" class="login100-form validate-form" method="post">
+                    {% csrf_token %}
+					<div class="login100-form-avatar">
+						<img src="{% static 'loginmedia/images/avatar-01.png' %}" alt="AVATAR">
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45">
+						Chaliye shuru karte hai!
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Username is required">
+						<input class="input100" type="text" name="username" placeholder="Username">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn p-t-10">
+						<button class="login100-form-btn">
+							Login
+						</button>
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45" style="color: brown;">
+							{% for message in messages %}
+                            {{message}}
+                            {% endfor %}
+						</a>
+                    </span>
+                    
+					<div class="text-center w-full">
+						<a class="txt1" href="{% url 'register' %}">
+							Create new account
+							<i class="fa fa-long-arrow-right"></i>						
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="{% static 'loginmedia/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'loginmedia/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'loginmedia/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'loginmedia/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'loginmedia/js/main.js' %}"></script>
+
 </body>
 </html>

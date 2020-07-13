@@ -1,27 +1,128 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Registration</title>
+	<title>Registration</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'loginmedia/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'loginmedia/css/main.css' %}">
+<!--===============================================================================================-->
 </head>
 <body>
-    <form action="register" method="post">
-        {% csrf_token %}
-        <h1> Please provide the details for registration</h1>
-        <br><br>
-        <input type="text" name="first_name" placeholder="First Name"><br><br>
-        <input type="text" name="last_name" placeholder="Last Name"><br><br>
-        <input type="email" name="email" placeholder="Email ID"><br><br>
-        <input type="text" name="username" placeholder="User Name"><br><br>
-        <input type="password" name="password1" placeholder="Password"><br><br>
-        <input type="password" name="password2" placeholder="Confirm Password"><br><br>
-        <input type="Submit">
-    </form>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url({% static 'loginmedia/images/img-02.jpg' %});">
+			<div class="wrap-login100 p-t-190 p-b-30">
+				<form action="register" class="login100-form validate-form" method="post">
+                    {% csrf_token %}
+					<div class="login100-form-avatar">
+						<img src="{% static 'loginmedia/images/avatar-02.png' %}" alt="AVATAR">
+					</div>
 
-    <div>
-        {% for message in messages %}
-        {{message}}
-        {% endfor %}
-    </div>
+					<span class="login100-form-title p-t-20 p-b-45">
+						Welcome my friend welcome!
+					</span>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "First name is required">
+						<input class="input100" type="text" name="first_name" placeholder="First Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+					</div>
+
+					<div class="wrap-input100 validate-input m-b-10" data-validate = "Last name is required">
+						<input class="input100" type="text" name="last_name" placeholder="Last Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-10" data-validate = "Email id is required">
+						<input class="input100" type="email" name="email" placeholder="Email ID">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-10" data-validate = "User name is required">
+						<input class="input100" type="text" name="username" placeholder="User Name">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-user"></i>
+						</span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+						<input class="input100" type="password" name="password1" placeholder="Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+                    </div>
+                    
+                    <div class="wrap-input100 validate-input m-b-10" data-validate = "Confirm Password">
+						<input class="input100" type="password" name="password2" placeholder="Confirm Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn p-t-10">
+						<button class="login100-form-btn">
+							Register
+						</button>
+					</div>
+
+					<span class="login100-form-title p-t-20 p-b-45" style="color: brown;">
+							{% for message in messages %}
+                            {{message}}
+                            {% endfor %}
+						</a>
+                    </span>
+                    
+					<div class="text-center w-full">
+						<a class="txt1" href="{% url 'index' %}">
+                            <i class="fa fa-long-arrow-left"></i>	
+                            Go to home page					
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	
+
+	
+<!--===============================================================================================-->	
+	<script src="{% static 'loginmedia/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'loginmedia/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'loginmedia/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'loginmedia/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'loginmedia/js/main.js' %}"></script>
+
 </body>
 </html>

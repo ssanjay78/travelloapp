@@ -5,5 +5,5 @@ from django.db import models
 
 # Created Class to take objects for Testimonials 
 class Testimonials(models.Model):
-    comment = ArrayField(models.TextField())
-    name = ArrayField(models.CharField(max_length=50))
+    comment = models.TextField()
+    name = models.CharField(max_length=50)

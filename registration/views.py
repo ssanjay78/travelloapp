@@ -11,14 +11,12 @@ def loginwith(request):
         username = request.POST["username"]
         password = request.POST['password']
         user = auth.authenticate(request,username=username,password=password)
-        # print(User.is_authenicated, User.first_name)
-
-        if user is not None:
-            print("Logged in as : ", user.is_authenticated, user.first_name)
-            return redirect('/')
-        else:
+        try:    
+            auth.login(request, user)
+        except Exception:
             messages.info(request,"Credential does not exist!")
             return redirect('loginwith')
+        return redirect('/')
     else:
         return render(request,'loginwith.html')
 
@@ -60,13 +58,18 @@ def logout(request):
     return redirect('/')
 
 def testimonials(request):
-    user_feedback = Testimonials.objects.all()
+    slang_words = ['fuck ', 'sex ', 'chutiya ', 'bc ', 'mc ', 'gandu ', 'benchod ']
     if request.method == 'POST':
-        username = request.POST['username']
+        name = request.user.first_name
         comments = request.POST['comments']
-        
-        feedback = Testimonials.objects.create(comment=[comments],name=[username])
-        
-        return render(request, 'index.html', {'user_feedback': user_feedback})
+
+        for each in slang_words:
+            if each in comments.lower():
+                return redirect('/')
+
+        feedback = Testimonials.objects.create(comment=comments,name=name)
+        feedback.save()
+
+        return redirect('/')
     else:
         return render(request, 'testimonials.html')
