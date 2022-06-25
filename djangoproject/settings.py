@@ -25,7 +25,7 @@ SECRET_KEY = 'hf6r9g-ust*6gz7g$6+okk1cur5j9n*iftd%=1=0r)w_2gz#=i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['travelloapp.azurewebsites.net']
 
 
 # Application definition
